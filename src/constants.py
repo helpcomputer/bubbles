@@ -1,6 +1,7 @@
 
 from enum import IntEnum
 
+FPS = 60
 APP_WIDTH = 128
 APP_HEIGHT = 128
 BORDER_WIDTH = 4

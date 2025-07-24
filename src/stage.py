@@ -5,11 +5,12 @@ from player import Player
 from bubble import Bubble
 from harpoon import Harpoon
 import hud
-from utils import draw_centred_label, stop_music
+from utils import draw_centred_label
 import vars
 from constants import (SCORE_SEC_REMAINING_BONUS, MAX_STAGE_NUMBER, 
                        SOUND_CHANNEL, SND_STAGE_CLEAR, MUS_GAMEPLAY,)
 import stage_data
+from audio import Audio
 
 MAX_GET_READY_FRAMES = 120
 MAX_TIME_UP_FRAMES = 120
@@ -64,7 +65,7 @@ class Stage:
       if self.time_frame_cnt == MAX_GET_READY_FRAMES:
          self.time_frame_cnt = 0
          self.set_state(STATE_PLAY)
-         px.playm(MUS_GAMEPLAY, self.music_pause_pos, loop=True)
+         Audio.start_music(MUS_GAMEPLAY, do_loop=True)
 
    def update_state_stage_clear(self):
       self.time_frame_cnt += 1
@@ -74,7 +75,7 @@ class Stage:
             self.app.go_to_next_stage()
          else:
             self.set_state(STATE_GAME_COMPLETE)
-            stop_music()
+            Audio.stop_music()
 
    def update_state_game_complete(self):
       self.time_frame_cnt += 1
@@ -117,13 +118,13 @@ class Stage:
    def update_state_paused(self):
       if vars.pressed_pause:
          self.set_state(STATE_PLAY)
-         px.playm(MUS_GAMEPLAY, self.music_pause_pos, loop=True)
+         Audio.resume_music()
          return
       
    def update_state_play(self):
       if vars.pressed_pause:
          self.set_state(STATE_PAUSED)
-         self.music_pause_pos = stop_music()
+         Audio.pause_music()
          return
 
       self.time_frame_cnt += 1
@@ -133,7 +134,7 @@ class Stage:
          if self.time_secs == 0:
             self.player.kill()
             self.set_state(STATE_TIME_UP)
-            stop_music()
+            Audio.stop_music()
             return
 
       self.player.update()
@@ -151,11 +152,11 @@ class Stage:
          self.set_state(STATE_PLAYER_DEAD)
          self.bubble_pops = []
          self.score_labels = []
-         stop_music()
+         Audio.stop_music()
       elif len(self.bubbles) == 0:
          px.play(SOUND_CHANNEL, SND_STAGE_CLEAR)
          self.set_state(STATE_STAGE_CLEAR)
-         stop_music()
+         Audio.stop_music()
          vars.add_score(self.time_secs * SCORE_SEC_REMAINING_BONUS)
          self.bubble_pops = []
          self.score_labels = []

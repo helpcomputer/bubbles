@@ -1,7 +1,7 @@
 
 import pyxel as px
 
-from constants import APP_WIDTH, APP_HEIGHT, MAX_STAGE_NUMBER
+from constants import FPS, APP_WIDTH, APP_HEIGHT, MAX_STAGE_NUMBER
 from stage import Stage
 from main_menu import MainMenu
 import vars
@@ -11,7 +11,7 @@ STATE_PLAY = 1
 
 class App:
    def __init__(self):
-      px.init(APP_WIDTH, APP_HEIGHT, "Bubbles", fps=60, display_scale=3, capture_scale=1)
+      px.init(APP_WIDTH, APP_HEIGHT, "Bubbles", fps=FPS, display_scale=3, capture_scale=1)
       px.load("assets/main.pyxres")
 
       self.state = STATE_MAIN_MENU
