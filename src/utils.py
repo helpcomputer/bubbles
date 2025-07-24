@@ -27,8 +27,9 @@ def get_str_width(str):
 
 # Return stop position or 0 if stopped already.
 def stop_music():
+    pos = px.play_pos(MUSIC_CHANNEL_0)
     px.stop(MUSIC_CHANNEL_0)
-    stop = px.stop(MUSIC_CHANNEL_1)
-    if stop:
-        return stop[1]
+    px.stop(MUSIC_CHANNEL_1)
+    if pos:
+        return pos[1]
     return 0
