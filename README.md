@@ -11,7 +11,7 @@ You can play the game [here](https://helpcomputer.github.io/pyxel/bubbles/).
 
 ## Dependencies
 - [Python](https://www.python.org/) 3.10.7 or higher.
-- [Pyxel](https://github.com/kitao/pyxel) 2.2.3 or higher.
+- [Pyxel](https://github.com/kitao/pyxel) 2.4.8 or higher.
 
 ## Build & Run
 - Inside the "src" directory, run "python main.py"
