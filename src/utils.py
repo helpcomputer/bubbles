@@ -1,6 +1,6 @@
 
 import pyxel as px
-from constants import APP_WIDTH
+from constants import APP_WIDTH, MUSIC_CHANNEL_0, MUSIC_CHANNEL_1
 
 def rect_overlap(x1, y1, w1, h1, x2, y2, w2, h2):
     return x1 < x2 + w2 and \
@@ -24,3 +24,11 @@ def draw_centred_label(y, str, text_col=px.COLOR_WHITE, bg_col=px.COLOR_PINK):
 
 def get_str_width(str):
     return len(str) * px.FONT_WIDTH
+
+# Return stop position or 0 if stopped already.
+def stop_music():
+    px.stop(MUSIC_CHANNEL_0)
+    stop = px.stop(MUSIC_CHANNEL_1)
+    if stop:
+        return stop[1]
+    return 0

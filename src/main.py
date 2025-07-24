@@ -12,7 +12,7 @@ STATE_PLAY = 1
 class App:
    def __init__(self):
       px.init(APP_WIDTH, APP_HEIGHT, "Bubbles", fps=60, display_scale=3, capture_scale=1)
-      px.load("assets/my_resource.pyxres")
+      px.load("assets/main.pyxres")
 
       self.state = STATE_MAIN_MENU
       self.main_menu = MainMenu(self)

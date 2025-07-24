@@ -24,10 +24,9 @@ You can play the game [here](https://helpcomputer.github.io/pyxel/bubbles/).
 
 ## Future Development
 - Expand the game to feature more of the original Pang! mechanics.
-- Add music (please feel free to add music!)
 
 ## Credits
-- Game design and art by [badcomputer](https://twitter.com/badcomputer0)
+- Game design, art and music by [badcomputer](https://twitter.com/badcomputer0)
 - Title font by [Damien Guard](https://damieng.com/)
 
 ## License
